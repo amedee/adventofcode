@@ -24,7 +24,7 @@ class Day01 extends Specification {
     }
 
     def "Day 1 - Part 1"() {
-        println(input)
+        println(followInstructions(input))
         expect:
         true
 
