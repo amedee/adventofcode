@@ -52,4 +52,26 @@ class Day01 extends Specification {
         ")())())"   | 0
     }
 
+    @Unroll
+    def "several moves in elevator"(String instructions, int floor) {
+        expect:
+        followInstructions(instructions) == floor
+
+        where:
+        instructions | floor
+        "("          | 1
+        ")"          | -1
+        ""           | 0
+        "*"          | 0
+        "(())"       | 0
+        "()()"       | 0
+        "((("        | 3
+        "(()(()("    | 3
+        "))((((("    | 3
+        "())"        | -1
+        "))("        | -1
+        ")))"        | -3
+        ")())())"    | -3
+    }
+
 }
