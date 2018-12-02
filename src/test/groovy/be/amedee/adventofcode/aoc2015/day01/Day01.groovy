@@ -1,6 +1,7 @@
 package be.amedee.adventofcode.aoc2015.day01
 
 import spock.lang.Specification
+import spock.lang.Unroll
 
 class Day01 extends Specification {
 
@@ -12,4 +13,27 @@ class Day01 extends Specification {
         true
 
     }
+
+    @Unroll
+    def "one move in elevator"(String instruction, int direction) {
+        expect:
+        move(instruction) == direction
+
+        where:
+        instruction | direction
+        "("         | 1
+        ")"         | -1
+        ""          | 0
+        "*"         | 0
+        "(())"      | 0
+        "()()"      | 0
+        "((("       | 0
+        "(()(()("   | 0
+        "))((((("   | 0
+        "())"       | 0
+        "))("       | 0
+        ")))"       | 0
+        ")())())"   | 0
+    }
+
 }
