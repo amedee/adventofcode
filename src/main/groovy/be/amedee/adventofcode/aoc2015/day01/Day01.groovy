@@ -17,4 +17,13 @@ class Day01 {
         }
         direction
     }
+
+    static int followInstructions(String instructions) {
+        int floor
+        instructions.each {
+            movement -> floor += move(movement)
+        }
+        floor
+    }
+
 }

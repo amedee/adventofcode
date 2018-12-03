@@ -3,6 +3,7 @@ package be.amedee.adventofcode.aoc2015.day01
 import spock.lang.Specification
 import spock.lang.Unroll
 
+import static be.amedee.adventofcode.aoc2015.day01.Day01.followInstructions
 import static be.amedee.adventofcode.aoc2015.day01.Day01.move
 
 class Day01Test extends Specification {
@@ -60,11 +61,4 @@ class Day01Test extends Specification {
         ")())())"    | -3
     }
 
-    int followInstructions(String instructions) {
-        int floor
-        instructions.each {
-            movement -> floor += move(movement)
-        }
-        floor
-    }
 }
