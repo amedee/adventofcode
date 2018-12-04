@@ -1,5 +1,6 @@
 package be.amedee.adventofcode.aoc2015.day01
 
+import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
@@ -8,14 +9,8 @@ import static be.amedee.adventofcode.aoc2015.day01.Day01.move
 
 class Day01Test extends Specification {
 
+    @Shared
     String input = getClass().getResource("input").getText("UTF-8")
-
-    def "Day 1 - Part 1"() {
-        println(followInstructions(input))
-        expect:
-        true
-
-    }
 
     @Unroll
     def "one move in elevator"(String instruction, int direction) {
@@ -59,6 +54,7 @@ class Day01Test extends Specification {
         "))("        | -1
         ")))"        | -3
         ")())())"    | -3
+        input        | 280
     }
 
 }
