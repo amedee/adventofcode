@@ -2,28 +2,23 @@ package be.amedee.adventofcode.aoc2015.day01
 
 class Day01 {
 
-    static int move(String instruction) {
-        int direction
+    static move = { String instruction ->
         switch (instruction) {
             case "(":
-                direction = 1
-                break
+                return 1
             case ")":
-                direction = -1
-                break
+                return -1
             default:
-                direction = 0
-                break
+                return 0
         }
-        direction
     }
 
-    static int followInstructions(String instructions) {
-        int floor
-        instructions.each {
-            movement -> floor += move(movement)
-        }
-        floor
+    static followInstructions = {String instructions ->
+        instructions
+                .toList()
+                .stream()
+                .mapToInt(move)
+                .sum()
     }
 
 }
