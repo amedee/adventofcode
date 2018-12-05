@@ -54,6 +54,10 @@ class Day01Test extends Specification {
         "))("        | -1
         ")))"        | -3
         ")())())"    | -3
+        /**
+         * Solution in Bash:
+         * echo $(($(grep --only-matching "(" input | wc -l) - $(grep --only-matching ")" input | wc -l)))
+         */
         input        | 280
     }
 
