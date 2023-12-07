@@ -16,4 +16,14 @@ dependencies {
     testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
 }
 
+test {
+    useJUnitPlatform()
+}
+
+tasks.test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
 mainClassName = 'be.amedee.adventofcode.App'
