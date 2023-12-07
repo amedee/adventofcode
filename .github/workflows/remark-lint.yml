@@ -1,0 +1,23 @@
+---
+name: reviewdog
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: 22 7 * * 0
+jobs:
+  remark-lint:
+    name: runner / remark-lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: install remark presets
+        run: npm install remark-preset-lint-recommended
+        shell: bash
+      - name: remark-lint
+        uses: reviewdog/action-remark-lint@v5
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
