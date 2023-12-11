@@ -4,9 +4,9 @@ class Day01 {
 
     static move = { String instruction ->
         switch (instruction) {
-            case "(":
+            case '(':
                 return 1
-            case ")":
+            case ')':
                 return -1
             default:
                 return 0
