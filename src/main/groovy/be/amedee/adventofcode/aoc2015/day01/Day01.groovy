@@ -13,8 +13,8 @@ class Day01 {
         }
     }
 
-    static followInstructions = {String instructions ->
-        instructions
+    static followInstructions = { String instructions ->
+        (instructions ?: '')
                 .toList()
                 .stream()
                 .mapToInt(move)

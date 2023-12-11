@@ -32,6 +32,7 @@ class Day01Test extends Specification {
         "))("       | 0
         ")))"       | 0
         ")())())"   | 0
+        null        | 0
     }
 
     @Unroll
@@ -54,6 +55,7 @@ class Day01Test extends Specification {
         "))("        | -1
         ")))"        | -3
         ")())())"    | -3
+        null         | 0
         /**
          * Solution in Bash:
          * echo $(($(grep --only-matching "(" input | wc -l) - $(grep --only-matching ")" input | wc -l)))
