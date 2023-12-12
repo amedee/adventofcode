@@ -14,10 +14,12 @@ import static be.amedee.adventofcode.aoc2015.day01.Day01.move
 class Day01Test extends Specification {
 
     @Shared
-    String input = getClass().getResource('input').getText('UTF-8')
+    private final input = getClass()
+            .getResource('input')
+            .getText('UTF-8')
 
     @Unroll
-    def 'one move in elevator'(String instruction, int direction) {
+    private 'one move in elevator'(String instruction, int direction) {
         expect:
         move(instruction) == direction
 
@@ -40,7 +42,7 @@ class Day01Test extends Specification {
     }
 
     @Unroll
-    def 'several moves in elevator'(String instructions, int floor) {
+    private 'several moves in elevator'(String instructions, int floor) {
         expect:
         followInstructions(instructions) == floor
 
