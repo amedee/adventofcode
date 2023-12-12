@@ -7,6 +7,10 @@ import spock.lang.Unroll
 import static be.amedee.adventofcode.aoc2015.day01.Day01.followInstructions
 import static be.amedee.adventofcode.aoc2015.day01.Day01.move
 
+/**
+ * Solution in Bash:
+ * echo $(($(grep --only-matching "(" input | wc -l) - $(grep --only-matching ")" input | wc -l)))
+ */
 class Day01Test extends Specification {
 
     @Shared
@@ -56,10 +60,6 @@ class Day01Test extends Specification {
         ')))'        | -3
         ')())())'    | -3
         null         | 0
-        /**
-         * Solution in Bash:
-         * echo $(($(grep --only-matching "(" input | wc -l) - $(grep --only-matching ")" input | wc -l)))
-         */
         input        | 280
     }
 
