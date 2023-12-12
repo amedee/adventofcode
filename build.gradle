@@ -2,6 +2,7 @@ plugins {
     id 'groovy'
     id 'application'
     id 'org.jetbrains.kotlin.jvm' version '1.9.21'
+    id 'org.jetbrains.dokka' version '1.9.10'
 }
 
 group = 'be.amedee'
@@ -36,3 +37,7 @@ application {
     mainClass = 'MainKt'
 }
 apply plugin: 'application'
+
+groovydoc {}
+dokkaHtml {}
+dokkaJavadoc {}
