@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+templates:
+  - name: Bug Report
+    about: Create a bug report to help us improve
+    title: "[BUG] "
+    labels:
+      - bug
+
+  - name: Feature Request
+    about: Suggest an idea for this project
+    title: "[FEATURE] "
+    labels:
+      - enhancement
+
+  - name: General Feedback
+    about: Provide general feedback or ask a question
+    title: "[FEEDBACK] "
