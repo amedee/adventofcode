@@ -4,7 +4,7 @@ Thank you for considering contributing to Advent of Code! We appreciate your tim
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to amedee-github@amedee.be.
+This project and everyone participating in it is governed by our [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to [amedee-github@amedee.be](mailto:amedee-github@amedee.be).
 
 ## How to Contribute
 
