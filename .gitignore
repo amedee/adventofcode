@@ -13,6 +13,7 @@ build/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/uiDesigner.xml
+.idea/vcs.xml
 .idea/libraries/
 .idea/sonarlint/*
 *.iws
