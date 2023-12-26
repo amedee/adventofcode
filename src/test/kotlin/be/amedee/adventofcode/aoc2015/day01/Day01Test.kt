@@ -4,11 +4,13 @@ import io.kotest.data.blocking.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 
 /**
  * Solution in Bash:
  * echo $(($(grep --only-matching "(" input | wc -l) - $(grep --only-matching ")" input | wc -l)))
  */
+@TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class Day01Test {
 
     private val input = Day01Test::class.java.getResource("input")?.readText()
@@ -30,7 +32,7 @@ class Day01Test {
         row(")())())", 0),
         row(null, 0)
     ) { instruction, direction ->
-        Day01().move(instruction.toString()) shouldBe direction
+    move(instruction.toString()) shouldBe direction
     }
 
     @Test
@@ -51,6 +53,6 @@ class Day01Test {
         row(null, 0),
         row(input, 280)
     ) { instructions, floor ->
-        Day01().followInstructions(instructions.toString()) shouldBe floor
+        followInstructions(instructions.toString()) shouldBe floor
     }
 }
