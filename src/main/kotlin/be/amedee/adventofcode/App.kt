@@ -9,11 +9,15 @@ fun main() {
     findAndRunMainMethods(basePackage, basePackage)
 }
 
-fun findAndRunMainMethods(packageName: String, excludePackage: String) {
+fun findAndRunMainMethods(
+    packageName: String,
+    excludePackage: String,
+) {
     val packageDir = getPackageDir(packageName)
 
-    val sortedClassFiles = getClassFiles(packageDir)
-        .sortedBy { it.nameWithoutExtension }
+    val sortedClassFiles =
+        getClassFiles(packageDir)
+            .sortedBy { it.nameWithoutExtension }
 
     sortedClassFiles.forEach { classFile ->
         val className = packageName + "." + classFile.nameWithoutExtension
@@ -51,28 +55,31 @@ fun getClassFiles(packageDir: File) =
         file.isFile && file.name.endsWith(".class")
     }?.toList() ?: emptyList()
 
-fun getMainMethods(clazz: Class<*>) =
-    clazz.methods.filter { isMainMethod(it) }
+fun getMainMethods(clazz: Class<*>) = clazz.methods.filter { isMainMethod(it) }
 
-fun runMainMethod(className: String, mainMethod: Method) =
-    try {
-        println("Running main method in class: $className")
-        mainMethod.invoke(null, arrayOf<String>())
-        println()
-    } catch (ex: InvocationTargetException) {
-        println("Error invoking main method in class $className:")
-        ex.targetException.printStackTrace()
-    }
+fun runMainMethod(
+    className: String,
+    mainMethod: Method,
+) = try {
+    println("Running main method in class: $className")
+    mainMethod.invoke(null, arrayOf<String>())
+    println()
+} catch (ex: InvocationTargetException) {
+    println("Error invoking main method in class $className:")
+    ex.targetException.printStackTrace()
+}
 
 fun getSubPackages(packageDir: File) =
     packageDir.listFiles { file ->
         file.isDirectory
     }?.toList() ?: emptyList()
 
-fun isInPackage(clazz: Class<*>, packageName: String) =
-    clazz.`package`?.name == packageName
+fun isInPackage(
+    clazz: Class<*>,
+    packageName: String,
+) = clazz.`package`?.name == packageName
 
 fun isMainMethod(method: Method) =
     (method.name == "main") &&
-            (method.parameterCount == 1) &&
-            (method.parameterTypes[0] == Array<String>::class.java)
+        (method.parameterCount == 1) &&
+        (method.parameterTypes[0] == Array<String>::class.java)

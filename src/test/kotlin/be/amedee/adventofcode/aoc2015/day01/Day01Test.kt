@@ -10,43 +10,44 @@ import org.junit.jupiter.api.TestInstance
  */
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class Day01Test {
-
     private val input = Day01Test::class.java.getResource("input")?.readText()
 
-    private val oneMoveTestData = listOf(
-        "(" to 1,
-        ")" to -1,
-        "" to 0,
-        "*" to 0,
-        "(())" to 0,
-        "()()" to 0,
-        "(((" to 0,
-        "(()(()(" to 0,
-        "))(((((" to 0,
-        "())" to 0,
-        "))(" to 0,
-        ")))" to 0,
-        ")())())" to 0,
-        null to 0
-    )
+    private val oneMoveTestData =
+        listOf(
+            "(" to 1,
+            ")" to -1,
+            "" to 0,
+            "*" to 0,
+            "(())" to 0,
+            "()()" to 0,
+            "(((" to 0,
+            "(()(()(" to 0,
+            "))(((((" to 0,
+            "())" to 0,
+            "))(" to 0,
+            ")))" to 0,
+            ")())())" to 0,
+            null to 0,
+        )
 
-    private val severalMovesTestData = listOf(
-        "(" to 1,
-        ")" to -1,
-        "" to 0,
-        "*" to 0,
-        "(())" to 0,
-        "()()" to 0,
-        "(((" to 3,
-        "(()(()(" to 3,
-        "))(((((" to 3,
-        "())" to -1,
-        "))(" to -1,
-        ")))" to -3,
-        ")())())" to -3,
-        null to 0,
-        input to 280
-    )
+    private val severalMovesTestData =
+        listOf(
+            "(" to 1,
+            ")" to -1,
+            "" to 0,
+            "*" to 0,
+            "(())" to 0,
+            "()()" to 0,
+            "(((" to 3,
+            "(()(()(" to 3,
+            "))(((((" to 3,
+            "())" to -1,
+            "))(" to -1,
+            ")))" to -3,
+            ")())())" to -3,
+            null to 0,
+            input to 280,
+        )
 
     @Test
     fun `one move in elevator`() =

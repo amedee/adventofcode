@@ -11,34 +11,35 @@ This project and everyone participating in it is governed by our [Code of Conduc
 We welcome contributions in the form of bug reports, feature requests, documentation improvements, and code contributions. To contribute, follow these steps:
 
 1. Fork the repository to your GitHub account.
-2. Clone the forked repository to your local machine:
+
+1. Clone the forked repository to your local machine:
 
    ```bash
    git clone https://github.com/amedee/adventofcode.git
    ```
 
-3. Create a new branch for your changes:
+1. Create a new branch for your changes:
 
    ```bash
    git checkout -b feature/your-feature
    ```
 
-4. Make your changes and commit them with descriptive commit messages:
+1. Make your changes and commit them with descriptive commit messages:
 
    ```bash
    git add .
    git commit -m "Add your changes here"
    ```
 
-5. Push your changes to your fork:
+1. Push your changes to your fork:
 
    ```bash
    git push origin feature/your-feature
    ```
 
-6. Create a Pull Request (PR) against the `main` branch of the original repository.
+1. Create a Pull Request (PR) against the `main` branch of the original repository.
 
-7. Ensure your PR title and description clearly describe your changes. Include information on the problem you are solving, and how your changes address it.
+1. Ensure your PR title and description clearly describe your changes. Include information on the problem you are solving, and how your changes address it.
 
 ## Code Style
 

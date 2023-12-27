@@ -36,5 +36,4 @@ fun main() {
     } else {
         println("Santa never enters the basement.")
     }
-
 }
