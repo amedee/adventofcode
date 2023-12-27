@@ -1,5 +1,11 @@
 name: reviewdog
-on: [pull_request]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  schedule:
+    - cron: '22 7 * * 0'
 jobs:
   remark-lint:
     name: runner / remark-lint
