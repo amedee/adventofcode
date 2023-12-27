@@ -1,7 +1,5 @@
 package be.amedee.adventofcode.aoc2015.day01
 
-import io.kotest.data.blocking.forAll
-import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -15,44 +13,50 @@ class Day01Test {
 
     private val input = Day01Test::class.java.getResource("input")?.readText()
 
-    @Test
-    fun `one move in elevator`() = forAll(
-        row("(", 1),
-        row(")", -1),
-        row("", 0),
-        row("*", 0),
-        row("(())", 0),
-        row("()()", 0),
-        row("(((", 0),
-        row("(()(()(", 0),
-        row("))(((((", 0),
-        row("())", 0),
-        row("))(", 0),
-        row(")))", 0),
-        row(")())())", 0),
-        row(null, 0)
-    ) { instruction, direction ->
-    move(instruction.toString()) shouldBe direction
-    }
+    private val oneMoveTestData = listOf(
+        "(" to 1,
+        ")" to -1,
+        "" to 0,
+        "*" to 0,
+        "(())" to 0,
+        "()()" to 0,
+        "(((" to 0,
+        "(()(()(" to 0,
+        "))(((((" to 0,
+        "())" to 0,
+        "))(" to 0,
+        ")))" to 0,
+        ")())())" to 0,
+        null to 0
+    )
+
+    private val severalMovesTestData = listOf(
+        "(" to 1,
+        ")" to -1,
+        "" to 0,
+        "*" to 0,
+        "(())" to 0,
+        "()()" to 0,
+        "(((" to 3,
+        "(()(()(" to 3,
+        "))(((((" to 3,
+        "())" to -1,
+        "))(" to -1,
+        ")))" to -3,
+        ")())())" to -3,
+        null to 0,
+        input to 280
+    )
 
     @Test
-    fun `several moves in elevator`() = forAll(
-        row("(", 1),
-        row(")", -1),
-        row("", 0),
-        row("*", 0),
-        row("(())", 0),
-        row("()()", 0),
-        row("(((", 3),
-        row("(()(()(", 3),
-        row("))(((((", 3),
-        row("())", -1),
-        row("))(", -1),
-        row(")))", -3),
-        row(")())())", -3),
-        row(null, 0),
-        row(input, 280)
-    ) { instructions, floor ->
-        followInstructions(instructions.toString()) shouldBe floor
-    }
+    fun `one move in elevator`() =
+        oneMoveTestData.forEach { (instruction, direction) ->
+            move(instruction.toString()) shouldBe direction
+        }
+
+    @Test
+    fun `several moves in elevator`() =
+        severalMovesTestData.forEach { (instructions, floor) ->
+            followInstructions(instructions.toString()) shouldBe floor
+        }
 }
