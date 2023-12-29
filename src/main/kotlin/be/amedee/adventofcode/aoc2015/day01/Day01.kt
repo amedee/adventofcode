@@ -6,28 +6,28 @@ import java.io.InputStreamReader
 /**
  * Single move to the next floor, up or down.
  *
- * @param instruction a single elevator instruction
  * @return do we go up or down
  */
-fun move(): (String) -> Int = {
-    when (it) {
-        "(" -> 1
-        ")" -> -1
-        else -> 0
+fun move(): (String) -> Int =
+    {
+        when (it) {
+            "(" -> 1
+            ")" -> -1
+            else -> 0
+        }
     }
-}
 
 /**
  * The entire list of elevator instructions.
  *
- * @param instructions the list of elevator instructions, Lisp-style
  * @return at which floor Santa ends up
  */
-fun followInstructions(): (String) -> Int = { instructionList ->
-    instructionList
-        .toList()
-        .sumOf { move()(it.toString()) }
-}
+fun followInstructions(): (String) -> Int =
+    { instructionList ->
+        instructionList
+            .toList()
+            .sumOf { move()(it.toString()) }
+    }
 
 /**
  * Find the position of the first character that causes Santa to enter the
@@ -53,7 +53,6 @@ class Day01 {
         val inputStream = javaClass.getResourceAsStream(filePath)
         return BufferedReader(InputStreamReader(inputStream!!)).use { it.readText().trim() }
     }
-
 }
 
 /**
