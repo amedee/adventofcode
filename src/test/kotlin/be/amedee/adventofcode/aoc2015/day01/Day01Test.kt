@@ -49,34 +49,35 @@ class Day01Test {
             input to 280,
         )
 
-    private val findBasementTestData = listOf(
-        "" to 0,
-        ")" to 1,
-        " )" to 2,
-        "()" to 0,
-        "())" to 3,
-        "*" to 0,
-        "(())" to 0,
-        "()()" to 0,
-        "(((" to 0,
-        "(()(()(" to 0,
-        "))(((((" to 1,
-        "())" to 3,
-        "))(" to 1,
-        ")))" to 1,
-        ")())())" to 1,
-        "()(()))" to 7,
-        "()()(()(()" to 0,
-        "(()(()))))" to 9,
-        "()()()()()()(" to 0,
-        "(()(()()()(())))" to 0,
-        "(()()()()(()(()(()))())())" to 0,
-        "(((())))((((()))))" to 0,
-        ")()()()()()()()()()" to 1,
-        "()(()(()))()())(((()))" to 15,
-        null to 0,
-        input to 1797,
-    )
+    private val findBasementTestData =
+        listOf(
+            "" to 0,
+            ")" to 1,
+            " )" to 2,
+            "()" to 0,
+            "())" to 3,
+            "*" to 0,
+            "(())" to 0,
+            "()()" to 0,
+            "(((" to 0,
+            "(()(()(" to 0,
+            "))(((((" to 1,
+            "())" to 3,
+            "))(" to 1,
+            ")))" to 1,
+            ")())())" to 1,
+            "()(()))" to 7,
+            "()()(()(()" to 0,
+            "(()(()))))" to 9,
+            "()()()()()()(" to 0,
+            "(()(()()()(())))" to 0,
+            "(()()()()(()(()(()))())())" to 0,
+            "(((())))((((()))))" to 0,
+            ")()()()()()()()()()" to 1,
+            "()(()(()))()())(((()))" to 15,
+            null to 0,
+            input to 1797,
+        )
 
     @Test
     fun `one move in elevator`() =
@@ -94,5 +95,5 @@ class Day01Test {
     fun `find the basement`() =
         findBasementTestData.forEach { (instructions, basement) ->
             findBasementPosition(instructions.toString()) shouldBe basement
-    }
+        }
 }
