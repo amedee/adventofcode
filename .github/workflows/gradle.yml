@@ -26,9 +26,9 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v3
         with:
-          java-version: "21"
+          java-version: 21
           distribution: temurin
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2.10.0
         with:
-          arguments: build test run dokkaHtml dokkaJavadoc
+          arguments: build test run
