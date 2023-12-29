@@ -10,7 +10,8 @@ import org.junit.jupiter.api.TestInstance
  */
 @TestInstance(TestInstance.Lifecycle.PER_METHOD)
 class Day01Test {
-    private val input = Day01().readFile()
+    private val inputFile = "input"
+    private val input = Day01().readElevatorInstructionsFromFile(inputFile)
 
     private val oneMoveTestData =
         listOf(
