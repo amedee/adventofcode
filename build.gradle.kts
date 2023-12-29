@@ -37,6 +37,10 @@ tasks.named("run") {
     group = "application"
 }
 
+tasks.dokkaJavadoc {
+    outputDirectory.set(buildDir.resolve("docs/javadoc"))
+}
+
 kotlin {
     jvmToolchain(21)
 }
