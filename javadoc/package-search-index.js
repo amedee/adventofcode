@@ -1,0 +1,1 @@
+var packageSearchIndex = [{"l":"be.amedee.adventofcode","url":"be/amedee/adventofcode/package-summary.html"}, {"l":"be.amedee.adventofcode.aoc2015.day01","url":"be/amedee/adventofcode/aoc2015/day01/package-summary.html"}, {"l":"be.amedee.adventofcode.aoc2015.day02","url":"be/amedee/adventofcode/aoc2015/day02/package-summary.html"}, {"l":"All packages","url":"index.html"}]

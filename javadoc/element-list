@@ -1,0 +1,7 @@
+$dokka.format:javadoc-v1
+$dokka.linkExtension:html
+
+be.amedee.adventofcode
+be.amedee.adventofcode.aoc2015.day01
+be.amedee.adventofcode.aoc2015.day02
+
