@@ -46,9 +46,8 @@ fun findBasementPosition(instructions: String): Int {
 }
 
 class Day01 {
-    fun readFile(): String {
+    fun readElevatorInstructionsFromFile(fileName: String): String {
         val packageName = javaClass.`package`.name.replace(".", "/")
-        val fileName = "input"
         val filePath = "/$packageName/$fileName"
         val inputStream = javaClass.getResourceAsStream(filePath)
         return BufferedReader(InputStreamReader(inputStream!!)).use { it.readText().trim() }
@@ -60,7 +59,8 @@ class Day01 {
  * but he can't find the right floor - the directions he got are a little confusing.
  */
 fun main() {
-    val puzzleInput = Day01().readFile()
+    val inputFile = "input"
+    val puzzleInput = Day01().readElevatorInstructionsFromFile(inputFile)
 
     val endFloor = followInstructions()(puzzleInput)
     println("Santa ends up on floor $endFloor.")
