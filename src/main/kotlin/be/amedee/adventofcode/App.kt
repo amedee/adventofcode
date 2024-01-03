@@ -4,60 +4,56 @@ import java.io.File
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
 
+private const val BASE_PACKAGE = "be.amedee.adventofcode"
+private const val EXCLUDE_PACKAGE = BASE_PACKAGE
+
 fun main() {
-    val basePackage = "be.amedee.adventofcode"
-    findAndRunMainMethods(basePackage, basePackage)
+    findAndRunMainMethods(BASE_PACKAGE, EXCLUDE_PACKAGE)
 }
 
-fun findAndRunMainMethods(
+private fun findAndRunMainMethods(
     packageName: String,
     excludePackage: String,
 ) {
     val packageDir = getPackageDir(packageName)
+    runMainMethodsInThisPackage(packageDir, packageName, excludePackage)
+    runMainMethodsInSubPackages(packageDir, packageName, excludePackage)
+}
 
-    val sortedClassFiles =
-        getClassFiles(packageDir)
-            .sortedBy { it.nameWithoutExtension }
-
-    sortedClassFiles.forEach { classFile ->
-        val className = packageName + "." + classFile.nameWithoutExtension
+private fun runMainMethodsInThisPackage(
+    packageDir: File,
+    packageName: String,
+    excludePackage: String,
+) = getClassFiles(packageDir)
+    .sortedBy { it.nameWithoutExtension }
+    .forEach {
+        val className = "$packageName.${it.nameWithoutExtension}"
         try {
             val clazz = Class.forName(className)
 
-            if (!isInPackage(clazz, excludePackage)) {
-                val mainMethods = getMainMethods(clazz)
-
-                mainMethods.forEach { mainMethod ->
-                    runMainMethod(className, mainMethod)
-                }
+            when {
+                !isInPackage(clazz, excludePackage) ->
+                    getMainMethods(clazz)
+                        .forEach { mainMethod ->
+                            runMainMethod(className, mainMethod)
+                        }
             }
         } catch (e: ClassNotFoundException) {
             e.printStackTrace()
         }
     }
 
-    getSubPackages(packageDir)
-        .sortedBy { it.name }
-        .forEach { subPackage ->
-            val subPackageName = packageName + "." + subPackage.name
-            findAndRunMainMethods(subPackageName, excludePackage)
-        }
-}
+private fun runMainMethodsInSubPackages(
+    packageDir: File,
+    packageName: String,
+    excludePackage: String,
+) = getSubPackages(packageDir)
+    .sortedBy { it.name }
+    .forEach {
+        findAndRunMainMethods("$packageName.${it.name}", excludePackage)
+    }
 
-fun getPackageDir(packageName: String): File {
-    val packagePath = packageName.replace(".", "/")
-    val packageUrl = Thread.currentThread().contextClassLoader.getResource(packagePath)
-    return File(packageUrl?.toURI()!!)
-}
-
-fun getClassFiles(packageDir: File) =
-    packageDir.listFiles { file ->
-        file.isFile && file.name.endsWith(".class")
-    }?.toList() ?: emptyList()
-
-fun getMainMethods(clazz: Class<*>) = clazz.methods.filter { isMainMethod(it) }
-
-fun runMainMethod(
+private fun runMainMethod(
     className: String,
     mainMethod: Method,
 ) = try {
@@ -69,17 +65,36 @@ fun runMainMethod(
     ex.targetException.printStackTrace()
 }
 
-fun getSubPackages(packageDir: File) =
+private fun getMainMethods(clazz: Class<*>) = clazz.methods.filter { isMainMethod(it) }
+
+private fun getPackageDir(packageName: String) =
+    File(
+        Thread
+            .currentThread()
+            .contextClassLoader
+            .getResource(
+                packageName
+                    .replace(".", "/"),
+            )
+            ?.toURI()!!,
+    )
+
+private fun getClassFiles(packageDir: File) =
+    packageDir.listFiles { file ->
+        file.isFile && file.name.endsWith(".class")
+    }?.toList() ?: emptyList()
+
+private fun getSubPackages(packageDir: File) =
     packageDir.listFiles { file ->
         file.isDirectory
     }?.toList() ?: emptyList()
 
-fun isInPackage(
+private fun isInPackage(
     clazz: Class<*>,
     packageName: String,
 ) = clazz.`package`?.name == packageName
 
-fun isMainMethod(method: Method) =
-    (method.name == "main") &&
-        (method.parameterCount == 1) &&
-        (method.parameterTypes[0] == Array<String>::class.java)
+private fun isMainMethod(method: Method) =
+    method.name == "main" &&
+        method.parameterCount == 1 &&
+        method.parameterTypes[0] == Array<String>::class.java
