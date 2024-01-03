@@ -55,5 +55,5 @@ fun main() {
     val presentDimensions = Day02().readPresentDimensionsFromFile(inputFile)
 
     val totalSquareFeet = calculateWrappingPaperOrder(presentDimensions)
-    println("Elves should order $totalSquareFeet square feet of wrapping paper.")
+    println("Elves should order ${"%,d".format(totalSquareFeet)} square feet of wrapping paper.")
 }

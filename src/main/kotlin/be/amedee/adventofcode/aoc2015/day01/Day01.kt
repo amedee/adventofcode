@@ -66,9 +66,8 @@ fun main() {
     println("Santa ends up on floor $endFloor.")
 
     val basementPosition = findBasementPosition(puzzleInput)
-    if (basementPosition == 0) {
-        println("Santa never enters the basement.")
-    } else {
-        println("Santa enters the basement at character position $basementPosition.")
+    when (basementPosition) {
+        0 -> println("Santa never enters the basement.")
+        else -> println("Santa enters the basement at character position ${"%,d".format(basementPosition)}.")
     }
 }
