@@ -40,7 +40,7 @@ tasks.named("run") {
 }
 
 tasks.dokkaJavadoc {
-    outputDirectory.set(buildDir.resolve("docs/javadoc"))
+    outputDirectory.set(layout.buildDirectory.dir("docs/javadoc"))
 }
 
 kotlin {
