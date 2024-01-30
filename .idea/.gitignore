@@ -1,3 +1,12 @@
-# Default ignored files
+/libraries/
 /shelf/
+/sonarlint/*
+
+/compiler.xml
+/jarRepositories.xml
+/kotlinc.xml
+/misc.xml
+/modules.xml
+/uiDesigner.xml
+/vcs.xml
 /workspace.xml
