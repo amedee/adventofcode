@@ -1,6 +1,8 @@
 plugins {
-    kotlin("jvm") version "1.9.21"
-    id("org.jlleitschuh.gradle.ktlint") version "12.0.3"
+    kotlin("jvm") version "2.0.0-Beta3"
+    id("com.github.ben-manes.versions") version "0.51.0"
+    id("se.patrikerdes.use-latest-versions") version "0.2.18"
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.0"
     id("org.jetbrains.dokka") version "1.9.10"
     application
 }
@@ -19,7 +21,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     testImplementation("org.jetbrains.kotlin:kotlin-test")
-    testImplementation("io.kotest:kotest-core:4.1.3")
+    testImplementation("io.kotest:kotest-core:4.2.0.RC2")
     testImplementation("io.kotest:kotest-assertions-core:5.6.2")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
